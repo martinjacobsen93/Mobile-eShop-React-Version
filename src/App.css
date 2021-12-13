@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.navBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navBar__brandTitle {
+  border: 2px solid rgba(221, 208, 208, 0.747);
+  border-radius: 10px;
+  padding: 4px;
+  margin: 2px;
+  background-color: rgba(175, 46, 23, 0.658);
+  color: white;
+  transition: all .45s;
+}
+
+.navBar__brandTitle:hover {
+  cursor: pointer;
+  border-color: black;
+}
+
+.navBar__linkList {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 5px;
+}
+
+.itemList {
+  list-style-type: none;
+}
