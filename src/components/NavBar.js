@@ -1,5 +1,6 @@
 import React from 'react'
 import Boton from './Boton'
+import CartWidget from './CartWidget'
 
 const NavBar = () => {
     return (
@@ -9,6 +10,7 @@ const NavBar = () => {
                 <li className="itemList"><Boton content='Home'/></li>
                 <li className="itemList"><Boton content='Contacto'/></li>
                 <li className="itemList"><Boton content='Nosotros'/></li>
+                <li className="itemList"><CartWidget /></li>
             </ul>
         </div>
     )

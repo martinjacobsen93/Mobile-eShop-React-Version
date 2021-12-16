@@ -1,12 +1,13 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import TituloBienvenida from './components/TituloBienvenida';
+import ItemListContainer from './components/ItemListContainer'
 
 function App() {
   return (
     <div className="App">
       <NavBar/>
-      <h2 className="text-success mt-2">Hola Mundo!</h2>
+      <ItemListContainer greeting={'Hola, este es mi nuevo proyecto de React.js'}/>
       <TituloBienvenida />
     </div>
   );

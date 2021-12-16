@@ -3,7 +3,7 @@ import React, {Fragment} from 'react'
 const TituloBienvenida = () => {
     return (
         <Fragment>
-            <h2>Bienvenidos a la página oficial de Coders</h2>
+            <h2 style={{color: '#232323'}}>Te doy la bienvenida!</h2>
         </Fragment>
     )
 }

@@ -69,3 +69,7 @@
 .itemList {
   list-style-type: none;
 }
+
+.cartIcon {
+  cursor: pointer;
+}
