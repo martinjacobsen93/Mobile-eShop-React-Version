@@ -70,6 +70,13 @@
   list-style-type: none;
 }
 
-.cartIcon {
-  cursor: pointer;
+.contadorContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 500px;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.329);
 }
