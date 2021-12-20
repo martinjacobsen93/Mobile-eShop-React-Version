@@ -2,15 +2,15 @@ import './App.css';
 import NavBar from './components/NavBar';
 import TituloBienvenida from './components/TituloBienvenida';
 import ItemListContainer from './components/ItemListContainer'
-import Contador from './components/Contador'
+import ItemCount from './components/ItemCount'
 
 function App() {
   return (
     <div className="App">
       <NavBar/>
-      <ItemListContainer greeting={'Hola, este es mi nuevo proyecto de React.js'}/>
-      <TituloBienvenida />
-      <Contador stock={5}/>
+      {/* <TituloBienvenida /> */}
+      <ItemListContainer greeting={'Tienda de celulares'}/>
+      <ItemCount stock={5} initial={1}/>
     </div>
   );
 }
