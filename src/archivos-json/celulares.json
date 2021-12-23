@@ -1,17 +1,55 @@
-[
-    {"modelo": "Samsung S10+",
-    "año": 2019,
-    "stock": 10},
-    
-    {"modelo": "Samsung S20+",
-    "año": 2020,
-    "stock": 2},
+[{
+        "modelo": "Samsung S10+",
+        "año": 2019,
+        "stock": 10,
+        "url": "./img/samsung-s21.jpg"
+    },
 
-    {"modelo": "Samsung S21+",
-    "año": 2021,
-    "stock": 1},
+    {
+        "modelo": "Samsung S20+",
+        "año": 2020,
+        "stock": 2,
+        "url": "./img/samsung-s21.jpg"
+    },
 
-    {"modelo": "Iphone 13 Pro Max",
-    "año": 2021,
-    "stock": 3}
+    {
+        "modelo": "Samsung S21+",
+        "año": 2021,
+        "stock": 1,
+        "url": "./img/samsung-s21.jpg"
+    },
+
+    {
+        "modelo": "Xiaomi 1",
+        "año": 2020,
+        "stock": 5,
+        "url": "./img/samsung-s21.jpg"
+    },
+
+    {
+        "modelo": "Xiaomi 2",
+        "año": 2021,
+        "stock": 1,
+        "url": "./img/samsung-s21.jpg"
+    },
+
+    {
+        "modelo": "Motorola Edge",
+        "año": 2021,
+        "stock": 5,
+        "url": "./img/samsung-s21.jpg"
+    },
+
+    {
+        "modelo": "Motorola E6I",
+        "año": 2019,
+        "stock": 12,
+        "url": "./img/samsung-s21.jpg"
+    },
+    {
+        "modelo": "Motorola G20",
+        "año": 2020,
+        "stock": 10,
+        "url": "./img/samsung-s21.jpg"
+    }
 ]

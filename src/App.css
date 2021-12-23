@@ -152,7 +152,6 @@
   border: 2px solid black;
   border-radius: 6px;
   margin: 50px;
-  height: 150px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -163,6 +162,10 @@
   margin: auto;
   font-size: 20px;
   font-weight: bold;
+}
+
+.item__img {
+  width: 100%;
 }
 
 /* ITEM LIST */

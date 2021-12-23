@@ -1,34 +1,19 @@
-import React, {useEffect, useState} from 'react'
-import Celulares from '../archivos-json/celulares.json'
+import React from 'react'
 import Item from './Item';
 
 
-const ItemList = () => {
-    const URL = Celulares;
-    const [celulares, setCelulares] = useState([]);
-
-    const getData = () => {
-        const newPromise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve([...URL])
-                reject("No se pudo conseguir la información solicitada")
-            }, 2000);
-        })
-        newPromise.then(res => setCelulares(res))
-                 .catch(err => console.log(err));
-    }
-    
-
-    useEffect(() => {
-        getData()
-    }, [])
-
-
+const ItemList = ({lista}) => {
 
     return (
         <div className='itemList__container'>
-            {celulares.map((c, index) =>
-                <Item model={c.modelo} year={c.año} stock={c.stock} key={index}/>
+            {lista.map((c, index) =>
+                <Item 
+                    model={c.modelo} 
+                    year={c.año} 
+                    stock={c.stock} 
+                    img={c.url} 
+                    key={index} 
+                />
             )}
         </div>
     )
