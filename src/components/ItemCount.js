@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect} from 'react'
+import React, { Fragment, useState} from 'react'
 
 const ItemCount = ({stock, initial}) => {
 
@@ -6,7 +6,7 @@ const ItemCount = ({stock, initial}) => {
     const [cantidadStock, setcantidadStock] = useState(stock - initial)
 
     const sumarCantidad = () => {  /* Funcion llamada en el evento onClick de linea 46 */
-        if (count < stock && cantidadStock != 0) {
+        if (count < stock && cantidadStock !== 0) {
             setCount(count + 1)
             setcantidadStock(cantidadStock - 1)
         }
@@ -29,12 +29,6 @@ const ItemCount = ({stock, initial}) => {
             console.log('No se pueden agregar más elementos al carrito')
         }
     }
-
-    useEffect(() => {
-        console.log("Fase de montaje")
-    }, [])
-
-    useEffect(() => console.log("Fase de actualizacion"))
 
     return (
         <Fragment>

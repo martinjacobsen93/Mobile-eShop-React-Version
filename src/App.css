@@ -144,3 +144,31 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.664);
 }
+
+/* ITEM */
+
+.item__container {
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 6px;
+  margin: 50px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.item__detail {
+  margin: auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ITEM LIST */
+
+.itemList__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

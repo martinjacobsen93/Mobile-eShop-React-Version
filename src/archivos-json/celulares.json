@@ -1,0 +1,17 @@
+[
+    {"modelo": "Samsung S10+",
+    "año": 2019,
+    "stock": 10},
+    
+    {"modelo": "Samsung S20+",
+    "año": 2020,
+    "stock": 2},
+
+    {"modelo": "Samsung S21+",
+    "año": 2021,
+    "stock": 1},
+
+    {"modelo": "Iphone 13 Pro Max",
+    "año": 2021,
+    "stock": 3}
+]
