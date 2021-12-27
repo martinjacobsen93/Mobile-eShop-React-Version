@@ -2,8 +2,8 @@ import React, { Fragment, useState} from 'react'
 
 const ItemCount = ({stock, initial}) => {
 
-    const [count, setCount] = useState(initial)
-    const [cantidadStock, setcantidadStock] = useState(stock - initial)
+    const [count, setCount] = useState(stock > 0 ? initial : 0)
+    const [cantidadStock, setcantidadStock] = useState(stock > 0 ? stock - initial : 0)
 
     const sumarCantidad = () => {  /* Funcion llamada en el evento onClick de linea 46 */
         if (count < stock && cantidadStock !== 0) {
@@ -32,9 +32,9 @@ const ItemCount = ({stock, initial}) => {
 
     return (
         <Fragment>
-            <div className='contador__container'>
-                <p className='contador__detail'>Nombre: Samsung S10+</p>
-                <p className='contador__detail'>Stock: {cantidadStock}</p>
+            <div className=''>
+                {/* <p className='contador__detail'>Nombre: Samsung S10+</p> */}
+                <p className='item__detail'>Stock: {cantidadStock}</p>
                 <div className='contador__container2'>
                     <button onClick={restarCantidad} className='contador__boton botonRestar'>
                        -

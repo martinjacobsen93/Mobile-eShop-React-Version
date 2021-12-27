@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ItemList from './ItemList'
-import Celulares from '../archivos-json/celulares.json'
+import Celulares from '../data/celulares.json'
 
 const ItemListContainer = ({greeting}) => {
 
