@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ItemList from './ItemList'
 import Celulares from '../data/celulares.json'
+import TituloPagina from './TituloPagina'
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = ({titulo}) => {
 
     const [celulares, setCelulares] = useState([])
 
@@ -25,9 +26,7 @@ const ItemListContainer = ({greeting}) => {
 
     return (
         <div>
-            <div style={{borderTop: '2px solid black', borderBottom: '2px solid black', backgroundColor: 'coral'}}>
-                <h3>{greeting}</h3>
-            </div>
+            <TituloPagina titulo={titulo}/>
             <ItemList lista={celulares}/>
         </div>
     )
