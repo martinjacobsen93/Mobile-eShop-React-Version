@@ -74,24 +74,22 @@
 
 /* CONTADOR */
 
-.contador__container {
+.contador__containerGrande {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid green;
   border-radius: 6px;
-  width: 400px;
-  margin: 5px auto;
-  padding: 6px;
+  width: 100%;
+  margin: auto;
   gap: 7px;
 }
 
-.contador__container2 {
+.contador__container {
   display: flex;
   border: 2px solid rgba(0, 0, 0, 0.753);
   border-radius: 5px;
   justify-content: space-between;
-  width: 300px;
+  width: 100%;
   margin: auto;
 }
 
@@ -189,3 +187,5 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* ITEM DETAIL */

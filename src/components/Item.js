@@ -29,8 +29,9 @@ const Item = ({model, year, stock, img}) => {
     }
 
     return (
-        <div className='item__container'>
+        <div className='item__container' style={{backgroundColor: "#cdcdcf"}}>
             <img src={img} className='item__img' alt='img'></img>
+            <p className='item__detail'>{model}</p>
             {loading && <h3>Cargando...</h3>}
             {visible && <ItemDetailContainer modelo={model} año={year} stock={stock}/>}
             <button className='btnItemMostrar' ref={btnMostrar} onClick={mostrarDetalle}>Mostrar detalles</button>

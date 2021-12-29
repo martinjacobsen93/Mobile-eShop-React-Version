@@ -26,9 +26,9 @@ const ItemDetailContainer = (itemDado) => {
     }, [itemDado])
 
     return (
-        <div>
-            {visible && <ItemDetail modelo={item.modelo} año={item.año} stock={item.stock}/> }
-        </div>
+        <>
+            {visible && <ItemDetail item={item}/> }
+        </>
     )
 }
 

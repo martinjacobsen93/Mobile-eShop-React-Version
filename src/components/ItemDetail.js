@@ -1,12 +1,11 @@
 import React from 'react'
 import ItemCount from './ItemCount'
 
-const ItemDetail = ({modelo, stock, año}) => {
+const ItemDetail = ({item}) => {
     return (
         <div>
-            <p className='item__detail'>Modelo: {modelo}</p>
-            <p className='item__detail'>Año de lanzamiento: {año}</p>
-            <ItemCount stock={stock} initial={1}/>
+            <p className='item__detail'>Año de lanzamiento: {item.año}</p>
+            <ItemCount stock={item.stock} initial={1}/>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import CartWidget from './CartWidget'
 
 const NavBar = () => {
     return (
-        <div className='navBar bg-dark container-fluid p-2'>
+        <nav className='navBar bg-dark container-fluid p-2'>
             <h1 className='navBar__brandTitle'>Coders</h1>
             <ul className='navBar__linkList'>
                 <li className="itemList"><Boton content='Home'/></li>
@@ -12,7 +12,7 @@ const NavBar = () => {
                 <li className="itemList"><Boton content='Nosotros'/></li>
                 <li className="itemList"><CartWidget /></li>
             </ul>
-        </div>
+        </nav>
     )
 }
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useState} from 'react'
+import React, { useState} from 'react'
 
 const ItemCount = ({stock, initial}) => {
 
@@ -31,11 +31,11 @@ const ItemCount = ({stock, initial}) => {
     }
 
     return (
-        <Fragment>
-            <div className=''>
+        <>
+            <div className='contador__containerGrande'>
                 {/* <p className='contador__detail'>Nombre: Samsung S10+</p> */}
                 <p className='item__detail'>Stock: {cantidadStock}</p>
-                <div className='contador__container2'>
+                <div className='contador__container' style={{backgroundColor: "white"}}>
                     <button onClick={restarCantidad} className='contador__boton botonRestar'>
                        -
                     </button>
@@ -46,7 +46,7 @@ const ItemCount = ({stock, initial}) => {
                 </div>
                 <button className='contador__btnComprar' onClick={onAdd}>Sumar al carrito</button>
             </div>
-        </Fragment>
+        </>
     )
 }
 

@@ -2,54 +2,62 @@
         "modelo": "Samsung S10+",
         "año": 2019,
         "stock": 10,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 1
     },
 
     {
         "modelo": "Samsung S20+",
         "año": 2020,
         "stock": 2,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 2
     },
 
     {
         "modelo": "Samsung S21+",
         "año": 2021,
         "stock": 1,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 3
     },
 
     {
         "modelo": "Xiaomi 1",
         "año": 2020,
         "stock": 5,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 4
     },
 
     {
         "modelo": "Xiaomi 2",
         "año": 2021,
         "stock": 1,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 5
     },
 
     {
         "modelo": "Motorola Edge",
         "año": 2021,
         "stock": 5,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 6
     },
 
     {
         "modelo": "Motorola E6I",
         "año": 2019,
         "stock": 12,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 7
     },
     {
         "modelo": "Motorola G20",
         "año": 2020,
         "stock": 10,
-        "url": "./img/samsung-s21.jpg"
+        "url": "./img/samsung-s21.jpg",
+        "id": 8
     }
 ]
