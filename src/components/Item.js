@@ -1,42 +1,17 @@
-import React, { useRef, useState } from 'react'
-import ItemDetailContainer from './ItemDetailContainer';
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
+// import ItemDetailContainer from './ItemDetailContainer';
 
-const Item = ({model, year, stock, img}) => {
+const Item = ({modelo, id, url}) => {
 
-    const [visible, setVisible] = useState(false)
-    const [loading, setLoading] = useState(false)
-
-    let btnMostrar = useRef(),
-        btnOcultar = useRef();
-
-
-    const mostrarDetalle = () => {
-        setVisible(true);
-        setLoadingTitle()
-        btnMostrar.current.style.display = 'none';
-    }
-
-    const ocultarDetalle = () => {
-        setVisible(false);
-        btnMostrar.current.style.display = 'block';
-    }
-
-    const setLoadingTitle = () => {
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 2000);
-    }
+    const navigate = useNavigate();
 
     return (
-        <div className='item__container' style={{backgroundColor: "#cdcdcf"}}>
-            <img src={img} className='item__img' alt='img'></img>
-            <p className='item__detail'>{model}</p>
-            {loading && <h3>Cargando...</h3>}
-            {visible && <ItemDetailContainer modelo={model} año={year} stock={stock}/>}
-            <button className='btnItemMostrar' ref={btnMostrar} onClick={mostrarDetalle}>Mostrar detalles</button>
-            {visible && <button className='btnItemOcultar' ref={btnOcultar} onClick={ocultarDetalle}>Mostrar menos</button>}
-        </div>
+            <div className='item__container' style={{backgroundColor: "#cdcdcf"}}>
+                <img src={url} className='item__img' alt='img' />
+                <p className='item__detail'>{modelo}</p>
+                <button className='btnItemMostrar' onClick={()=> navigate(`/producto/${id}`)}>Mostrar detalles</button>
+            </div>
     )
 }
 

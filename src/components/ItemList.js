@@ -6,13 +6,10 @@ const ItemList = ({lista}) => {
 
     return (
         <div className='itemList__container'>
-            {lista.map((c, index) =>
+            {lista.map((item) =>
                 <Item 
-                    model={c.modelo} 
-                    year={c.año} 
-                    stock={c.stock} 
-                    img={c.url} 
-                    key={index} 
+                    {...item}
+                    key={item.id}
                 />
             )}
         </div>

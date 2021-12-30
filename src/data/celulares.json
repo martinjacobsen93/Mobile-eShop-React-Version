@@ -1,63 +1,79 @@
 [{
         "modelo": "Samsung S10+",
+        "marca": "Samsung",
         "año": 2019,
         "stock": 10,
-        "url": "./img/samsung-s21.jpg",
-        "id": 1
+        "url": "../img/samsung-s10.jpg",
+        "id": 1,
+        "precio": 80000
     },
 
     {
         "modelo": "Samsung S20+",
+        "marca": "Samsung",
         "año": 2020,
         "stock": 2,
-        "url": "./img/samsung-s21.jpg",
-        "id": 2
+        "url": "../img/samsung-s20.jpg",
+        "id": 2,
+        "precio": 100000
     },
 
     {
         "modelo": "Samsung S21+",
+        "marca": "Samsung",
         "año": 2021,
         "stock": 1,
-        "url": "./img/samsung-s21.jpg",
-        "id": 3
+        "url": "../img/samsung-s21.jpg",
+        "id": 3,
+        "precio": 136000
     },
 
     {
-        "modelo": "Xiaomi 1",
+        "modelo": "Xiaomi Mi 11 Lite",
+        "marca": "Xiaomi",
         "año": 2020,
         "stock": 5,
-        "url": "./img/samsung-s21.jpg",
-        "id": 4
+        "url": "../img/xiaomi1.jpg",
+        "id": 4,
+        "precio": 80000
     },
 
     {
-        "modelo": "Xiaomi 2",
+        "modelo": "Xiaomi Redmi Note 9",
+        "marca": "Xiaomi",
         "año": 2021,
         "stock": 1,
-        "url": "./img/samsung-s21.jpg",
-        "id": 5
+        "url": "../img/xiaomi2.jpg",
+        "id": 5,
+        "precio": 69000
     },
 
     {
         "modelo": "Motorola Edge",
+        "marca": "Motorola",
         "año": 2021,
         "stock": 5,
-        "url": "./img/samsung-s21.jpg",
-        "id": 6
+        "url": "../img/motorola edge.jpg",
+        "id": 6,
+        "precio": 70000
     },
 
     {
         "modelo": "Motorola E6I",
+        "marca": "Motorola",
         "año": 2019,
         "stock": 12,
-        "url": "./img/samsung-s21.jpg",
-        "id": 7
+        "url": "../img/motorola-e6i.jpg",
+        "id": 7,
+        "precio": 25000
     },
     {
         "modelo": "Motorola G20",
+        "marca": "Motorola",
         "año": 2020,
         "stock": 10,
-        "url": "./img/samsung-s21.jpg",
-        "id": 8
+        "url": "../img/motorola-g20.jpg",
+        "id": 8,
+        "precio": 30999
     }
 ]
