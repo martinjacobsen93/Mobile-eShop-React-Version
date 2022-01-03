@@ -6,6 +6,7 @@ import Error404 from './pages/Error404';
 import Home from './pages/Home';
 import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer';
+import CartPage from './pages/CartPage';
 
 function App() {
   return (
@@ -19,9 +20,11 @@ function App() {
 
           <Route path="/productos" element={<ItemListContainer titulo={'Tienda de celulares'} />} />
 
-          <Route path="/productos/:marcaId" element={<ItemListContainer titulo={'Filtrado por categoría'} />} /> {/* FILTRADO POR CATEGORIA*/}
+          <Route path="/products/:marcaId" element={<ItemListContainer titulo={'Filtrado por categoría'} />} /> {/* FILTRADO POR CATEGORIA*/}
 
           <Route path="/producto/:productoId" element={<ItemDetailContainer /> }/> {/* VISTA DEL DETALLE DE CELULAR*/}
+
+          <Route path="/cart" element={<CartPage /> }/>
 
           <Route path="*" element={<Error404 />}/>
         </Routes>

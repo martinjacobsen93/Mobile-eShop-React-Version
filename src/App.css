@@ -2,41 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* NAVBAR */
 
 .navBar {
@@ -150,11 +115,14 @@
   width: 300px;
   border: 2px solid black;
   border-radius: 0 0 6px 6px;
+  box-shadow:  10px 10px 30px #969696e1;
+  -webkit-box-shadow: -14px 11px 28px 2px rgba(1, 36, 48, 0.690);
   margin: 50px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   align-items: center;
+
 }
 
 .item__detail {
@@ -196,10 +164,10 @@
   margin: 20px auto;
   border: 2px solid black;
   border-radius: 0 0 6px 6px;
-  background-color: #cdcdcf
+  background-color: #cdcdcf;
+  box-shadow:  10px 10px 30px #969696e1;
+  -webkit-box-shadow: -14px 11px 28px 2px rgba(1, 36, 48, 0.690);
 }
-
-/* NAVLINK */
 
 /* CATEGORIAS */
 
@@ -217,9 +185,27 @@
   margin-top: 15px;
 }
 
-/* .tituloMarca {
+.tituloMarca {
   text-decoration: none;
-} */
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.884);
+  padding: 5px;
+  transition: all .6s;
+}
+
+.tituloMarca:hover {
+  background-color: rgba(0, 0, 0, 0.644);
+  color: white;
+}
+
+/* NAVLINK */
+
+.tituloMarcaActive {
+  color: rgba(255, 0, 0, 0.774);
+  border-color: rgba(255, 0, 0, 0.774);
+}
 
 /* ITEM LIST CONTAINER */
 

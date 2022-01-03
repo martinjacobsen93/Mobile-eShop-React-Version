@@ -6,6 +6,10 @@ import TituloPagina from './TituloPagina'
 const ItemDetail = ({url, marca, año, stock, modelo, precio}) => {
 
     const navigate = useNavigate();
+
+    const onAdd = (quantityToAdd) => {
+
+    }
     
     return (
         <>
@@ -16,7 +20,7 @@ const ItemDetail = ({url, marca, año, stock, modelo, precio}) => {
                 <p className='item__detail'>Marca: {marca}</p>
                 <p className='item__detail'>Año de lanzamiento: {año}</p>
                 <h3 style={{fontSize: 25}}>Precio: ${precio}</h3>
-                <ItemCount stock={stock} initial={1}/>
+                <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
             </div>
             <button className='btn btn-primary' onClick={()=> navigate("/productos")}>Regresar a Productos</button>
         </>

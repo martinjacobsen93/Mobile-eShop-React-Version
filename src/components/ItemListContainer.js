@@ -2,25 +2,26 @@ import React, { useState, useEffect } from 'react'
 import ItemList from './ItemList'
 import data  from '../data/celulares.json'
 import TituloPagina from './TituloPagina'
-import { Link, useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 const ItemListContainer = ({titulo}) => {
 
     const { marcaId } = useParams();
 
     const [celulares, setCelulares] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     const categorias = [
         {id: 1, address: "/productos", text: "TODAS LAS MARCAS"},
-        {id: 2, address: "/productos/Samsung", text: "Samsung"},
-        {id: 3, address: "/productos/Motorola", text: "Motorola"},
-        {id: 4, address: "/productos/Xiaomi", text: "Xiaomi"}
+        {id: 2, address: "/products/Samsung", text: "Samsung"},
+        {id: 3, address: "/products/Motorola", text: "Motorola"},
+        {id: 4, address: "/products/Xiaomi", text: "Xiaomi"}
     ]
 
 
     
     useEffect(() => {
+        setLoading(true)
         const getData = new Promise((res, rej) => {
             setTimeout(() => {                
                 const celularesData = marcaId
@@ -28,7 +29,6 @@ const ItemListContainer = ({titulo}) => {
                 : data;
                 res(celularesData)
                 rej("No se pudo conseguir la información solicitada")
-
             }, 1000);
         })
 
@@ -45,36 +45,20 @@ const ItemListContainer = ({titulo}) => {
     return (
         <div style={{backgroundColor: "#D9EBEC"}}>
             <TituloPagina titulo={titulo}/>
-            {!loading && <div className="categorias-marcas">
+            <div className="categorias-marcas">
                 {categorias.map(c => {
                     return (<div className='tituloMarca__container' key={c.id}>
-                                <Link to={c.address} className='tituloMarca'>{c.text}</Link>
+                                <NavLink to={c.address} className={({isActive}) => isActive ? 'tituloMarca tituloMarcaActive' : 'tituloMarca'}>{c.text}</NavLink>
                             </div>
                     )
                 })}
-            </div>}
-            {!loading && marcaId ? <h2 className='tituloMarcaSeleccionada'>{marcaId}</h2> : ""}
+            </div>
+            {/* {!loading && marcaId ? <h2 className='tituloMarcaSeleccionada'>{marcaId}</h2> : ""} */}
             {loading && <h2 className='mt-4'>Cargando...</h2>}
 
-            <ItemList lista={celulares}/>
+            {!loading && <ItemList lista={celulares}/>}
         </div>
     )
 }
 
 export default ItemListContainer
-
-
-
-// const getItems = () => {
-//     const promesa2 = new Promise((res, rej) => {
-//         setTimeout(() => {
-//             const myData = marcaId
-//                 ? data.filter(item => item.marca === marcaId)
-//                 : data;
-//             res(myData)
-//             rej("No se pudo conseguir la información solicitada")
-//         }, 1000);
-//     })
-//     promesa2.then(res => setCelulares(res))
-//             .catch(err => console.log(err));
-// }
