@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import TituloPagina from './TituloPagina'
 
+
+const cantidadInicial = 0;
+
+
 const ItemDetail = ({url, marca, año, stock, modelo, precio}) => {
 
     const navigate = useNavigate();
+    const [visible, setVisible] = useState(false) // esta variable de estado hace que se vea en un principio el item count, y que desaparezca el mismo para finalizar compra cuando selecciono la cantidad
+
+    const [cantidad, setCantidad] = useState(cantidadInicial);
 
     const onAdd = (quantityToAdd) => {
-
+        console.log(`Cantidad de elementos agregados desde itemDetail: ${quantityToAdd}`)
+        setVisible(true)
+        setCantidad(quantityToAdd)
+        console.log(`Cantidad de elementos agregados usando la variable de estado desde itemDetail: ${cantidad}`)
     }
     
     return (
@@ -20,7 +30,9 @@ const ItemDetail = ({url, marca, año, stock, modelo, precio}) => {
                 <p className='item__detail'>Marca: {marca}</p>
                 <p className='item__detail'>Año de lanzamiento: {año}</p>
                 <h3 style={{fontSize: 25}}>Precio: ${precio}</h3>
-                <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
+                {(stock !== 0 && !visible) && <ItemCount stock={stock} initial={1} onAdd={onAdd}/>}
+                {visible && <button onClick={()=> navigate("/cart")} className='contador__btnComprar my-4'>Finalizar Compra</button>}
+                {stock === 0 && <h2>No hay stock</h2>}
             </div>
             <button className='btn btn-primary' onClick={()=> navigate("/productos")}>Regresar a Productos</button>
         </>
