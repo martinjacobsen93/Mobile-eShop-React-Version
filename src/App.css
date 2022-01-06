@@ -169,6 +169,16 @@
   -webkit-box-shadow: -14px 11px 28px 2px rgba(1, 36, 48, 0.690);
 }
 
+.noStockMessage {
+  color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  width: 55%;
+  margin: 0 auto 10px;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+}
+
 /* CATEGORIAS */
 
 .categorias-marcas {

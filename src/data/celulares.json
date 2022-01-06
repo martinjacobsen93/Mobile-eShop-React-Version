@@ -2,7 +2,7 @@
         "modelo": "Samsung S10+",
         "marca": "Samsung",
         "año": 2019,
-        "stock": 10,
+        "stock": 0,
         "url": "../img/samsung-s10.jpg",
         "id": 1,
         "precio": 80000
@@ -40,7 +40,7 @@
         "modelo": "Samsung S21+",
         "marca": "Samsung",
         "año": 2021,
-        "stock": 1,
+        "stock": 0,
         "url": "../img/samsung-s21.jpg",
         "id": 5,
         "precio": 136000
@@ -68,7 +68,7 @@
         "modelo": "Xiaomi Mi 11 Lite",
         "marca": "Xiaomi",
         "año": 2020,
-        "stock": 5,
+        "stock": 0,
         "url": "../img/xiaomi1.jpg",
         "id": 8,
         "precio": 80000

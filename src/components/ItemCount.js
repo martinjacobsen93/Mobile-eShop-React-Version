@@ -24,16 +24,15 @@ const ItemCount = ({stock, initial, onAdd}) => {
             setCount(count - 1)
         }
     }
-    // const addToCart = () => { // Función llamada en el evento onClick de linea 53.
-    //     if (count > 0) {
-    //         onAdd(count)
-    //         setCount(0)
-    //         console.log(`Cantidad de elementos agregados al carrito desde ItemCount: ${count}`)
-    //     }
-    //     else {
-    //         console.log('No se pueden agregar más elementos al carrito')
-    //     }
-    // }
+    const addToCart = () => { // Función llamada en el evento onClick de linea 53.
+        if (count > 0) {
+            onAdd(count)
+            console.log(`Cantidad de elementos agregados al carrito desde ItemCount: ${count}`)
+        }
+        else {
+            console.log('No hay más stock o no estás seleccionando ningún producto')
+        }
+    }
 
     return (
         <>
@@ -48,7 +47,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                         +
                     </button>
                 </div>
-                <button className='contador__btnComprar' onClick={()=> onAdd(count)}>Sumar al carrito</button>
+                <button className='contador__btnComprar' onClick={addToCart}>Sumar al carrito</button>
             </div>
         </>
     )

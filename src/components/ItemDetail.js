@@ -11,7 +11,6 @@ const ItemDetail = ({url, marca, año, stock, modelo, precio}) => {
 
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false) // esta variable de estado hace que se vea en un principio el item count, y que desaparezca el mismo para finalizar compra cuando selecciono la cantidad
-
     const [cantidad, setCantidad] = useState(cantidadInicial);
 
     const onAdd = (quantityToAdd) => {
@@ -32,7 +31,7 @@ const ItemDetail = ({url, marca, año, stock, modelo, precio}) => {
                 <h3 style={{fontSize: 25}}>Precio: ${precio}</h3>
                 {(stock !== 0 && !visible) && <ItemCount stock={stock} initial={1} onAdd={onAdd}/>}
                 {visible && <button onClick={()=> navigate("/cart")} className='contador__btnComprar my-4'>Finalizar Compra</button>}
-                {stock === 0 && <h2>No hay stock</h2>}
+                {stock === 0 && <h2 className='noStockMessage'>No hay stock</h2>}
             </div>
             <button className='btn btn-primary' onClick={()=> navigate("/productos")}>Regresar a Productos</button>
         </>
