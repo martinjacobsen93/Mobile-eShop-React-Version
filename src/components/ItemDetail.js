@@ -1,24 +1,29 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react/cjs/react.development';
 import ItemCount from './ItemCount'
 import TituloPagina from './TituloPagina'
 
 
-const cantidadInicial = 0;
-
+const initialQuantity = 0;
 
 const ItemDetail = ({url, marca, año, stock, modelo, precio}) => {
 
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false) // esta variable de estado hace que se vea en un principio el item count, y que desaparezca el mismo para finalizar compra cuando selecciono la cantidad
-    const [cantidad, setCantidad] = useState(cantidadInicial);
+    const [quantity, setQuantity] = useState(initialQuantity);
+
 
     const onAdd = (quantityToAdd) => {
-        console.log(`Cantidad de elementos agregados desde itemDetail: ${quantityToAdd}`)
         setVisible(true)
-        setCantidad(quantityToAdd)
-        console.log(`Cantidad de elementos agregados usando la variable de estado desde itemDetail: ${cantidad}`)
+        setQuantity(quantityToAdd)
     }
+    
+    useEffect(() => {
+        if (quantity !== 0) {
+            console.log(`Cantidad de elementos agregados usando la variable de estado quantity desde itemDetail: ${quantity}`)
+        }
+    }, [quantity])
     
     return (
         <>
