@@ -43,7 +43,7 @@ const ItemListContainer = ({titulo}) => {
 
 
     return (
-        <div style={{backgroundColor: "#D9EBEC"}}>
+        <main className='main'>
             <TituloPagina titulo={titulo}/>
             <div className="categorias-marcas">
                 {categorias.map(c => {
@@ -57,7 +57,7 @@ const ItemListContainer = ({titulo}) => {
             {loading && <h2 className='mt-4'>Cargando...</h2>}
 
             {!loading && <ItemList lista={celulares}/>}
-        </div>
+        </main>
     )
 }
 

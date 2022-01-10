@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  min-height: 8vh;
 }
 
 .navBar__brandTitle {
@@ -184,6 +185,7 @@
 .categorias-marcas {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 80%;
   margin: auto;
   justify-content: center;
@@ -227,4 +229,39 @@
   border: 2px solid black;
   border-radius: 6px;
   background-color: coral;
+}
+
+/* CART PAGE PRODUCT DETAIL */
+
+.productoFinalizarCompra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  gap: 30px;
+  width: 50%;
+  margin: 10px auto;
+}
+
+.main {
+  min-height: 80vh;
+  background-color: #D9EBEC;
+}
+
+.footer {
+  min-height: 12vh;
+  background-color: rgba(34, 32, 32, 0.521);
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  /* border-top: 2px solid #fff; */
+}
+
+/* CART WIDGET */
+
+.cartIcon {
+  width: 50px;  /* hay que hacerlo responsive. */
 }

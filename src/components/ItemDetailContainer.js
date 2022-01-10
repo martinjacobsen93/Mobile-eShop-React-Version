@@ -29,9 +29,9 @@ const ItemDetailContainer = () => {
     }, [productoId])
 
     return (
-        <>  
-            {visible ? <h2 className='my-2'>Cargando...</h2> : <ItemDetail {...item}/> }
-        </>
+        <main className='main'>  
+            {visible ? <h2 className='pt-2'>Cargando...</h2> : <ItemDetail {...item}/> }
+        </main>
     )
 }
 

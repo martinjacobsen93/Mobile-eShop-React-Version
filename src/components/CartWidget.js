@@ -10,7 +10,7 @@ const CartWidget = () => {
     
     return (
         <Fragment>
-            <img src={cartIcon} alt="cartIcon" style={{width: '50px', cursor: 'pointer'}} className='mx-3 cartIcon' onClick={()=> navigate("/cart")}/>
+            <img src={cartIcon} alt="cartIcon" style={{cursor: 'pointer'}} className='cartIcon' onClick={()=> navigate("/cart")}/>
         </Fragment>
     )
 }
