@@ -10,18 +10,19 @@ const CartProvider = ({children}) => {
 
     const addItem = (item, quantity) => {
 
-        const {modelo, marca, año, stock, url, id, precio} = item
-        setCart([...cart, {modelo, marca, año, stock, url, id, precio, quantity}])
+        const {modelo, marca, año, stock, url, id, precio} = item;
+        const fullItem = {modelo, marca, año, stock, url, id, precio, quantity}
+        setCart([...cart, fullItem]);
 
-        // const itemInCart = cart.find(e => e.id === item.id)
-        // itemInCart ? 
-        //     cart.map(itemDado => {
-        //         return itemDado.id === item.id ? {...itemDado, quantity: itemDado.quantity + quantity} : itemDado
-        //     }) 
-        //     : setCart([...cart, {modelo, marca, año, stock, url, id, precio, quantity}])
+        const itemInCart = cart.find(e => e.id === item.id)
+        itemInCart ? 
+            setCart(cart.map(itemDado => {
+                return itemDado.id === item.id ? {...itemDado, quantity: itemDado.quantity + quantity} : itemDado
+            }))
+            : setCart([...cart, fullItem]);
 
-        setIsCartEmpty(false)
-        setTotal(total + (precio * quantity))
+        setIsCartEmpty(false);
+        setTotal(total + (precio * quantity));
     }
 
     const removeItem = (itemId) => {
@@ -39,10 +40,6 @@ const CartProvider = ({children}) => {
             setIsCartEmpty(true)
         }
     }
-
-    // const isInCart = id => cart.includes(e => e.id === id) // FALTA ARREGLAR ESTA FUNCION
-
-
     
     return <CartContext.Provider value={{addItem, removeItem, clear, cart, isCartEmpty, total}}>
         {children}
