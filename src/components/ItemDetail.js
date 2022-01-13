@@ -18,11 +18,6 @@ const ItemDetail = ({url, marca, año, stock, modelo, precio, id}) => {
         const itemDado = {url, marca, año, stock, modelo, precio, id}
         addItem(itemDado, quantityToAdd)
     }
-
-    // const cancelar = () => {
-    //     setVisible(false)
-    //     setQuantity(0)
-    // }
     
     return (
         <>
