@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { CartContext } from '../context/CartContext';
 import cartIcon from '../img/cartIcon.svg'
 
 
@@ -7,11 +8,13 @@ const CartWidget = () => {
 
 
     const navigate = useNavigate();
+    const {cantItems} = useContext(CartContext)
     
     return (
-        <Fragment>
-            <img src={cartIcon} alt="cartIcon" style={{cursor: 'pointer'}} className='cartIcon' onClick={()=> navigate("/cart")}/>
-        </Fragment>
+        <div className='d-flex' onClick={()=> navigate("/cart")} style={{cursor: 'pointer'}}>
+            <img src={cartIcon} alt="cartIcon" className='cartIcon'/>
+            <p className='m-auto text-light p-2'>({cantItems})</p>
+        </div>
     )
 }
 

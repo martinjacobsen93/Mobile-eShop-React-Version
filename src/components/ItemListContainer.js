@@ -53,10 +53,7 @@ const ItemListContainer = ({titulo}) => {
                     )
                 })}
             </div>
-            {/* {!loading && marcaId ? <h2 className='tituloMarcaSeleccionada'>{marcaId}</h2> : ""} */}
-            {loading && <h2 className='mt-4'>Cargando...</h2>}
-
-            {!loading && <ItemList lista={celulares}/>}
+            {loading ? <h2 className='mt-4'>Cargando...</h2> : <ItemList lista={celulares}/>}
         </main>
     )
 }

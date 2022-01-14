@@ -7,6 +7,7 @@ const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
     const [isCartEmpty, setIsCartEmpty] = useState(true);
     const [total, setTotal] = useState(0)
+    const [cantItems, setCantItems] = useState(0);
 
     const addItem = (item, quantity) => {
 
@@ -23,13 +24,15 @@ const CartProvider = ({children}) => {
 
         setIsCartEmpty(false);
         setTotal(total + (precio * quantity));
+        setCantItems(cantItems + quantity)
     }
 
     const removeItem = (itemId) => {
         if (cart.length === 1) setIsCartEmpty(true);
         const itemIndex = cart.findIndex(item => item.id === itemId);
-        const totalItemAmount = (cart[itemIndex].precio * cart[itemIndex].quantity)
-        setTotal(total - totalItemAmount)
+        const totalItemPrice = (cart[itemIndex].precio * cart[itemIndex].quantity)
+        setTotal(total - totalItemPrice)
+        setCantItems(cantItems - cart[itemIndex].quantity)
         cart.splice(itemIndex, 1)
         setCart([...cart])
     }
@@ -39,9 +42,10 @@ const CartProvider = ({children}) => {
             setCart([])
             setIsCartEmpty(true)
         }
+        setCantItems(0)
     }
     
-    return <CartContext.Provider value={{addItem, removeItem, clear, cart, isCartEmpty, total}}>
+    return <CartContext.Provider value={{addItem, removeItem, clear, cart, isCartEmpty, total, cantItems}}>
         {children}
     </CartContext.Provider>
 }
