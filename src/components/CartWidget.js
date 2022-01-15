@@ -13,7 +13,7 @@ const CartWidget = () => {
     return (
         <div className='d-flex' onClick={()=> navigate("/cart")} style={{cursor: 'pointer'}}>
             <img src={cartIcon} alt="cartIcon" className='cartIcon'/>
-            <p className='m-auto text-light p-2'>({cantItems})</p>
+            {cantItems > 0 && <p className='m-auto text-light pt-3 fw-bold'>({cantItems})</p>}
         </div>
     )
 }
