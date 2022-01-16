@@ -8,12 +8,12 @@ const CartWidget = () => {
 
 
     const navigate = useNavigate();
-    const {cantItems} = useContext(CartContext)
+    const {cantItems, isCartEmpty} = useContext(CartContext)
     
     return (
         <div className='d-flex' onClick={()=> navigate("/cart")} style={{cursor: 'pointer'}}>
             <img src={cartIcon} alt="cartIcon" className='cartIcon'/>
-            {cantItems > 0 && <p className='m-auto text-light pt-3 fw-bold'>({cantItems})</p>}
+            {!isCartEmpty && <p className='m-auto text-light pt-3 fw-bold'>({cantItems})</p>}
         </div>
     )
 }

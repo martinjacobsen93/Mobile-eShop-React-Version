@@ -31,7 +31,6 @@ const CartPage = () => {
                            </> 
                          : 
                            <>
-                            <h3 className='mt-5'>Resumen</h3>
                             <p style={{color: "red", margin: "auto 0", fontWeight: "bold"}}>Total: ${total}</p>
                             <button onClick={clear} style={{margin: 15}} className='btn btn-primary'>Vaciar carrito</button>
                             <button onClick={()=> navigate("../productos")} style={{margin: 15}} className='btn btn-primary'>Seguir comprando</button>

@@ -17,7 +17,7 @@ const ItemDetailContainer = () => {
                     const celular = Celulares.find(e => e.id === parseInt(productoId));
                     res(celular)
                     rej("Hubo un error. No se ha conseguido el resultado esperado.")
-                }, 2000);
+                }, 1000);
             })
             promesa.then(res => {
                 setItem(res)
