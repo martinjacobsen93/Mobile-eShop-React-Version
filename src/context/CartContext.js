@@ -11,8 +11,7 @@ const CartProvider = ({children}) => {
 
     const addItem = (item, quantity) => {
 
-        const {modelo, marca, año, stock, url, id, precio} = item;
-        const fullItem = {modelo, marca, año, stock, url, id, precio, quantity}
+        const fullItem = {...item, quantity}
         setCart([...cart, fullItem]);
 
         const itemInCart = cart.find(e => e.id === item.id)
@@ -23,8 +22,29 @@ const CartProvider = ({children}) => {
             : setCart([...cart, fullItem]);
 
         setIsCartEmpty(false);
-        setTotal(total + (precio * quantity));
+        setTotal(total + (item.precio * quantity));
         setCantItems(cantItems + quantity)
+    }
+
+    const addOne = itemId => {
+        const itemInCart = cart.find(e => e.id === itemId)
+        if (itemInCart.stock > 0) {
+            setCart(cart.map(e => {
+                return e.id === itemId ? {...e, quantity: e.quantity + 1} : e
+            }))
+            setTotal(total + itemInCart.precio)
+            setCantItems(cantItems + 1)
+        }
+    }
+
+    const deleteOne = itemId => {
+        const itemInCart = cart.find(e => e.id === itemId)
+        itemInCart.quantity <= 1 ? removeItem(itemId) :
+        setCart(cart.map(e => {
+            return e.id === itemId ? {...e, quantity: e.quantity - 1} : e
+        }))
+        setTotal(total - itemInCart.precio)
+        setCantItems(cantItems - 1)
     }
 
     const removeItem = (itemId) => {
@@ -41,11 +61,12 @@ const CartProvider = ({children}) => {
         if (cart.length > 0) {
             setCart([])
             setIsCartEmpty(true)
+            setTotal(0)
         }
         setCantItems(0)
     }
     
-    return <CartContext.Provider value={{addItem, removeItem, clear, cart, isCartEmpty, total, cantItems}}>
+    return <CartContext.Provider value={{addItem, removeItem, clear, cart, isCartEmpty, total, cantItems, addOne, deleteOne}}>
         {children}
     </CartContext.Provider>
 }

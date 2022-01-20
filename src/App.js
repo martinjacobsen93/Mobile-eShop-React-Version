@@ -10,9 +10,7 @@ import CartPage from './pages/CartPage';
 import Footer from './components/Footer';
 
 function App() {
-
-  console.log(process.env)
-
+  
   return (
     <div className="App">
       <Router>

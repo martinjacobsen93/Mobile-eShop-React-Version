@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ItemList from './ItemList'
-import data  from '../data/celulares.json'
 import TituloPagina from './TituloPagina'
 import { NavLink, useParams } from 'react-router-dom'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import db from '../firebase/firebase'
 
 const ItemListContainer = ({titulo}) => {
 
@@ -21,23 +22,27 @@ const ItemListContainer = ({titulo}) => {
 
     
     useEffect(() => {
-        setLoading(true)
-        const getData = new Promise((res, rej) => {
-            setTimeout(() => {                
-                const celularesData = marcaId
-                ? data.filter(e => e.marca === marcaId)
-                : data;
-                res(celularesData)
-                rej("No se pudo conseguir la información solicitada")
-            }, 1000);
-        })
+        setLoading(true)    
+        const getCelulares = async () => {
+            const myItems = marcaId ? query(collection(db, 'celulares'), where('marca', '==', marcaId))
+                                    : collection(db, 'celulares');
+    
+            try {
+                const querySnapshot = await getDocs(myItems)
+                setCelulares(querySnapshot.docs.map(celular => {
+                    return {...celular.data(), id: celular.id}
+                }))
+            } catch {
+                console.log("error, no se pudo conseguir la data solicitada")
+            }
+            setLoading(false)
+        }
 
-        getData.then(res => {
-            setCelulares(res)
-        })
-        .catch(err => console.log(err))
-        .finally(()=> setLoading(false))
+        getCelulares();
         
+        return (() => {
+            setLoading(false)
+        })
 
     }, [marcaId])
 

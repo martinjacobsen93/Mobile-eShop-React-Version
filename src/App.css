@@ -12,6 +12,10 @@
   min-height: 8vh;
 }
 
+.navBar2 {
+  background-color: rgba(0, 0, 0, 0.507);
+}
+
 .navBar__brandTitle {
   border: 2px solid rgba(221, 208, 208, 0.747);
   border-radius: 10px;
@@ -245,9 +249,28 @@
   margin: 10px auto;
 }
 
+.cartDetailButton {
+  padding: auto;
+  margin: auto 10px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  /* font-weight: bold; */
+}
+
+.cartDetailButtonAdd {
+  background-color: rgba(0, 128, 0, 0.750);
+  border-radius: 4px;
+}
+
+.cartDetailButtonSub {
+  background-color: rgba(255, 0, 0, 0.750);
+  border-radius: 4px;
+}
+
 .main {
   min-height: 80vh;
-  background-color: #D9EBEC;
+  background-color: #edf3f3;
 }
 
 .footer {

@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
-import Celulares from '../data/celulares.json'
+import { getDoc, doc } from 'firebase/firestore'
+import db from '../firebase/firebase'
 
 const ItemDetailContainer = () => {
 
     const [item, setItem] = useState({})
     const [visible, setVisible] = useState(true)
+    
 
     const { productoId } = useParams();
 
     useEffect(() => {
-        const getCelular = () => {
-            const promesa = new Promise((res, rej) => {
-                setTimeout(() => {
-                    const celular = Celulares.find(e => e.id === parseInt(productoId));
-                    res(celular)
-                    rej("Hubo un error. No se ha conseguido el resultado esperado.")
-                }, 1000);
-            })
-            promesa.then(res => {
-                setItem(res)
-                setVisible(false)
-            })
-        }
+        
+        const getCelular = async () => {
+            const ref = doc(db, 'celulares', productoId);
 
+            const itemBuscado = await getDoc(ref)
+            setItem({...itemBuscado.data(), id: itemBuscado.id})
+            setTimeout(() => {
+                setVisible(false)
+            }, 500);
+        }
+            
         getCelular()
+
+        return (() => {
+            setVisible(false)
+        })
     }, [productoId])
 
     return (
