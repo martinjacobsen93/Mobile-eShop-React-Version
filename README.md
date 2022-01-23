@@ -20,4 +20,4 @@ Uso de React Router Dom para la navegación
 
 Angel Martin Jacobsen
 
-2021 - Curso de React.js en CoderHouse
+2021-2022 - Proyecto personal de React.js realizado para el curso de React.js de CoderHouse
