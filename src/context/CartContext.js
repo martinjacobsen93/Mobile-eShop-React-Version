@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import db from '../firebase/firebase'
+import { collection, addDoc, doc, writeBatch } from "firebase/firestore"
 
 export const CartContext = React.createContext();
 
@@ -8,6 +10,10 @@ const CartProvider = ({children}) => {
     const [isCartEmpty, setIsCartEmpty] = useState(true);
     const [total, setTotal] = useState(0)
     const [cantItems, setCantItems] = useState(0);
+    const [userData, setUserData] = useState({});
+    const [currentPurchase, setCurrentPurchase] = useState({});
+    const [compraFinalizada, setCompraFinalizada] = useState(false);
+    const [checkout, setCheckout] = useState(true)
 
     const addItem = (item, quantity) => {
 
@@ -28,7 +34,7 @@ const CartProvider = ({children}) => {
 
     const addOne = itemId => {
         const itemInCart = cart.find(e => e.id === itemId)
-        if (itemInCart.stock > 0) {
+        if (itemInCart.stock > 0 && itemInCart.stock > itemInCart.quantity) {
             setCart(cart.map(e => {
                 return e.id === itemId ? {...e, quantity: e.quantity + 1} : e
             }))
@@ -62,11 +68,91 @@ const CartProvider = ({children}) => {
             setCart([])
             setIsCartEmpty(true)
             setTotal(0)
+            setCantItems(0)
         }
-        setCantItems(0)
+    }
+
+    const handleUserData = (e) => {
+        setUserData(prevData => {
+            return {...prevData, [e.target.name]: e.target.value}
+        })
     }
     
-    return <CartContext.Provider value={{addItem, removeItem, clear, cart, isCartEmpty, total, cantItems, addOne, deleteOne}}>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const newOrder = {user: {nombre: userData.nombre,
+                                    apellido: userData.apellido,
+                                    email: userData.email,
+                                    direccion: userData.direccion},
+                            items: cart.map(e => {
+                                return {item: e.modelo, precio: e.precio, cantidad: e.quantity, id: e.id, stock: e.stock}
+                            }),
+                            total: total
+        }
+
+        setCurrentPurchase(newOrder)
+
+        const purchasesCollection = collection(db, 'purchases'); /* CREO UN NUEVO DOCUMENTO CON UNA ORDEN DE COMPRA EN FIRESTORE, Y SI LA COLECCION PURCHASES NO EXISTE, LA CREA.*/
+        addDoc(purchasesCollection, newOrder).then(({id}) => {
+            setCurrentPurchase((sameOrder)=> {
+                return {...sameOrder, purchaseID: id}
+            })
+        })
+
+        const updateItems = () => { /* ESTA FUNCION UPDATEA EL STOCK EN FIRESTORE DE CADA PRODUCTO QUE HAYA SIDO COMPRADO.*/
+
+            const batch = writeBatch(db)
+            const itemIds = newOrder.items.map(e => e.id)
+
+            itemIds.forEach(itemId => {
+                const docRef = doc(db, 'celulares', itemId);
+                const itemDado = newOrder.items.find(e => e.id === itemId);
+                batch.update(docRef, {stock: itemDado.stock - itemDado.cantidad});
+            })
+            batch.commit();
+        }
+
+        updateItems(); // Llamo función
+        setCompraFinalizada(true)
+    }
+
+    const toCheckout = () => {
+        setCheckout(false)
+    }
+
+    const finalizarRevision = () => {
+        setCompraFinalizada(false)
+        setCurrentPurchase({})
+        setUserData(null)
+        clear();
+        setCheckout(true)
+    }
+
+    const returnToCart = () => {
+        setCheckout(true)
+    }
+
+    const data = {addItem, 
+        removeItem, 
+        clear, 
+        cart, 
+        isCartEmpty, 
+        total, 
+        cantItems, 
+        addOne, 
+        deleteOne, 
+        userData, 
+        handleUserData, 
+        handleSubmit, 
+        currentPurchase,
+        toCheckout,
+        checkout,
+        returnToCart,
+        compraFinalizada,
+        finalizarRevision};
+    
+    return <CartContext.Provider value={data}>
         {children}
     </CartContext.Provider>
 }

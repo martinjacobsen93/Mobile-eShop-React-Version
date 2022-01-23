@@ -288,3 +288,13 @@
 .cartIcon {
   width: 50px;  /* hay que hacerlo responsive. */
 }
+
+/* FORMULARIO COMPRA */
+
+.resumeDetail {
+  width: 80vw;
+  margin: 2rem auto;
+  border: 2px solid rgba(0, 0, 0, 0.719);
+  border-radius: 6px;
+  padding: 3%;
+}
