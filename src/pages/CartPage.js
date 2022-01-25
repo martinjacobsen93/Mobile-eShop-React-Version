@@ -12,9 +12,15 @@ const CartPage = () => {
 
     return (
         <main className='main'>
-            {checkout ? <>
+            {checkout ? 
+            <>
+            <TituloPagina titulo={"Checkout"} />
+            <FormularioCompra/>
+            </>
+            :
+            <>
             <TituloPagina titulo={"Carrito de compras"} />
-            <h2 className='pt-2'>Carrito de compras</h2>
+            {/* <h2 className='pt-2'>Carrito de compras</h2> */}
             {isCartEmpty ? "" : <h3 className='mt-5'>Resumen</h3>}
             {cart.map(i => {
                 return <div key={i.id} className='productoFinalizarCompra'>
@@ -43,11 +49,6 @@ const CartPage = () => {
                             <button className='btn btn-primary' onClick={toCheckout}>Checkout</button>
                            </>
             }
-            </>
-            :
-            <>
-            <TituloPagina titulo={"Checkout"} />
-            <FormularioCompra/>
             </>}
         </main>
     )

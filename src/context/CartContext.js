@@ -13,7 +13,7 @@ const CartProvider = ({children}) => {
     const [userData, setUserData] = useState({});
     const [currentPurchase, setCurrentPurchase] = useState({});
     const [compraFinalizada, setCompraFinalizada] = useState(false);
-    const [checkout, setCheckout] = useState(true)
+    const [checkout, setCheckout] = useState(false)
 
     const addItem = (item, quantity) => {
 
@@ -118,7 +118,7 @@ const CartProvider = ({children}) => {
     }
 
     const toCheckout = () => {
-        setCheckout(false)
+        setCheckout(true)
     }
 
     const finalizarRevision = () => {
@@ -126,11 +126,11 @@ const CartProvider = ({children}) => {
         setCurrentPurchase({})
         setUserData(null)
         clear();
-        setCheckout(true)
+        setCheckout(false)
     }
 
     const returnToCart = () => {
-        setCheckout(true)
+        setCheckout(false)
     }
 
     const data = {addItem, 
