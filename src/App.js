@@ -22,7 +22,7 @@ function App() {
 
           <Route path="/productos" element={<ItemListContainer titulo={'Tienda de celulares'} />} />
 
-          <Route path="/products/:marcaId" element={<ItemListContainer titulo={'Filtrado por categoría'} />} /> {/* FILTRADO POR CATEGORIA*/}
+          <Route path="/products/:marcaId" element={<ItemListContainer titulo={'Filtrado por marca'} />} /> {/* FILTRADO POR CATEGORIA*/}
 
           <Route path="/producto/:productoId" element={<ItemDetailContainer /> }/> {/* VISTA DEL DETALLE DE CELULAR*/}
 

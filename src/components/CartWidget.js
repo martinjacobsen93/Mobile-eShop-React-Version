@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../context/CartContext';
-import cartIcon from '../img/cartIcon.svg'
+import cartIcon from '../img/cartIcon.png'
 
 
 const CartWidget = () => {
@@ -11,9 +11,9 @@ const CartWidget = () => {
     const {cantItems, isCartEmpty} = useContext(CartContext)
     
     return (
-        <div className='d-flex' onClick={()=> navigate("/cart")} style={{cursor: 'pointer'}}>
+        <div className='cartWidgetContainer' onClick={()=> navigate("/cart")}>
             <img src={cartIcon} alt="cartIcon" className='cartIcon'/>
-            {!isCartEmpty && <p className='m-auto text-light pt-3 fw-bold'>({cantItems})</p>}
+            {!isCartEmpty && <p className='cartQuantity'>{cantItems}</p>}
         </div>
     )
 }

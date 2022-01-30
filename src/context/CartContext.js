@@ -23,13 +23,27 @@ const CartProvider = ({children}) => {
         const itemInCart = cart.find(e => e.id === item.id)
         itemInCart ? 
             setCart(cart.map(itemDado => {
-                return itemDado.id === item.id ? {...itemDado, quantity: itemDado.quantity + quantity} : itemDado
+                return itemDado.id === item.id ? {...itemDado, quantity: itemDado.stock >= itemDado.quantity + quantity ? itemDado.quantity + quantity : itemDado.quantity + 0} : itemDado
             }))
             : setCart([...cart, fullItem]);
 
+        const manageTotalAndQuantities = () => {
+            if (itemInCart && itemInCart.stock < (itemInCart.quantity + quantity)) {
+                setTotal(prevTotal => prevTotal)
+                setCantItems(prevQuantity => prevQuantity)
+            }
+            else if (itemInCart && itemInCart.stock === itemInCart.quantity && itemInCart.stock < itemInCart.quantity + quantity) {
+                setTotal(prevTotal => prevTotal)
+                setCantItems(prevQuantity => prevQuantity)
+            }
+            else {
+                setTotal(prevTotal => prevTotal + item.precio * quantity)
+                setCantItems(prevQuantity => prevQuantity + quantity)
+            }
+        }
+
+        manageTotalAndQuantities();
         setIsCartEmpty(false);
-        setTotal(total + (item.precio * quantity));
-        setCantItems(cantItems + quantity)
     }
 
     const addOne = itemId => {
