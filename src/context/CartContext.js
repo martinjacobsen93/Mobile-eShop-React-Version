@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import db from '../firebase/firebase'
 import { collection, addDoc, doc, writeBatch } from "firebase/firestore"
+import swal from 'sweetalert';
 
 export const CartContext = React.createContext();
 
@@ -59,12 +60,25 @@ const CartProvider = ({children}) => {
 
     const deleteOne = itemId => {
         const itemInCart = cart.find(e => e.id === itemId)
-        itemInCart.quantity <= 1 ? removeItem(itemId) :
-        setCart(cart.map(e => {
-            return e.id === itemId ? {...e, quantity: e.quantity - 1} : e
-        }))
-        setTotal(total - itemInCart.precio)
-        setCantItems(cantItems - 1)
+        if (itemInCart.quantity === 1) {
+            swal({
+                title: 'Eliminar producto',
+                text: 'Estás seguro que desear eliminar este item de tu carrito?',
+                icon: 'warning',
+                buttons: ['No', 'Si']
+            }).then(res => {
+                if (res) {
+                    removeItem(itemId)
+                }
+            })
+        }
+        else {
+            setCart(cart.map(e => {
+                return e.id === itemId ? {...e, quantity: e.quantity - 1} : e
+            }))
+            setTotal(total - itemInCart.precio)
+            setCantItems(cantItems - 1)
+        }
     }
 
     const removeItem = (itemId) => {
@@ -79,10 +93,19 @@ const CartProvider = ({children}) => {
 
     const clear = () => {
         if (cart.length > 0) {
-            setCart([])
-            setIsCartEmpty(true)
-            setTotal(0)
-            setCantItems(0)
+            swal({
+                title: 'Vaciar carrito',
+                text: 'Estás seguro que desear vaciar tu carrito?',
+                icon: 'warning',
+                buttons: ['No', 'Si']
+            }).then(res => {
+                if (res) {
+                    setCart([])
+                    setIsCartEmpty(true)
+                    setTotal(0)
+                    setCantItems(0)
+                }
+            })
         }
     }
 
@@ -135,11 +158,18 @@ const CartProvider = ({children}) => {
         setCheckout(true)
     }
 
+    const clearAfterSubmitting = () => {
+        setCart([])
+        setIsCartEmpty(true)
+        setTotal(0)
+        setCantItems(0)
+    }
+
     const finalizarRevision = () => {
         setCompraFinalizada(false)
         setCurrentPurchase({})
         setUserData(null)
-        clear();
+        clearAfterSubmitting();
         setCheckout(false)
     }
 
