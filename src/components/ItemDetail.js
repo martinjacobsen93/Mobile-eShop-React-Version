@@ -34,7 +34,7 @@ const ItemDetail = ({url, marca, año, stock, modelo, precio, id}) => {
                             </>}
                 {stock === 0 && <h2 className='noStockMessage'>No hay stock</h2>}
             </div>
-            <button className='btn btn-primary mb-3' onClick={()=> navigate("/productos")}>Regresar a Productos</button>
+            <button className='botonGenerico' onClick={()=> navigate("/productos")}>Regresar a Productos</button>
         </>
     )
 }

@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
             setItem({...itemBuscado.data(), id: itemBuscado.id})
             setTimeout(() => {
                 setVisible(false)
-            }, 500);
+            }, 300);
         }
             
         getCelular()
