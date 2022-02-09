@@ -1,23 +1,50 @@
-# Mobile Sales E-Shop
+# Mobile Sales E-Shop (React.js)
 
-Mobile Sales E-Shop es un e-commerce para la venta de dispositivos móviles, y electrónica.
+Este proyecto es el trabajo final de React.js y de la Carrera de Desarrollo FrontEnd en **Coderhouse**.
+
+Mobile Sales E-Shop es un e-commerce dedicado a la venta de dispositivos móviles, y electrónica.
 
 Cuenta con
 
--  filtro por categorías: tomando las categorías de la base de datos se generan filtros de productos
-- carrito: El mismo se encuentra en desarrollo
-- vistas de listas de productos: vista general de productos con foto y detalles básicos.
-- vista de detalles: vista con todos los detalles del producto y la opción de agregar una cantidad al carrito.
-- control de stock: revisa que los usuarios no puedan agregar más items al carrito de los que hay disponibles.
+-   **Filtro por categorías**: tomando las categorías de la base de datos se generan filtros de productos
+-   **Carrito de compras**: El mismo se encuentra en desarrollo
+-   **Vistas de listas de productos**: vista general de productos con foto y detalles básicos.
+-   **Vista de detalles**: vista con todos los detalles del producto y la opción de agregar una cantidad al carrito.
+-   **Control de stock**: revisa que los usuarios no puedan agregar más items al carrito de los que hay disponibles.
+
+
+## Instalación
+
+1.  Forkeá y cloná el repositorio
+    
+2.  Parado en la raíz del proyecto corré el comando
+    ```
+    npm install
+    ```
+    para instalar todas las dependecias del proyecto
+    
+3.  Para correr la app en tu navegador usá el siguiente comando
+    
+    ```
+    npm start
+    ```
+    estará disponible en [http://localhost:3000](http://localhost:3000/)
 
 ## Dependencias
 
-Uso de Bootstrap para dar formato a la aplicación.
+Uso de **Bootstrap** para dar formato a la aplicación.
 
-Uso de React Router Dom para la navegación
+Uso de **React Router Dom** para la navegación
+
+Uso de **Firebase** para persistencia de datos en la aplicación
+
+Uso de **SweetAlert** para alertas personalizadas
+
+### Información adicional
+
+Los estilos de la app están hechos con **CSS puro y React Bootstrap**, y contiene íconos customizables de **FontAwesome**, los cuales fueron importados desde el sitio oficial.
 
 ### Autor
 
-Angel Martin Jacobsen
-
-2021-2022 - Proyecto personal de React.js realizado para el curso de React.js de CoderHouse
+-   **Jacobsen Angel Martin**  -  [martinjacobsen93](https://github.com/martinjacobsen93)
+-  **Linkedin**  -  [Jacobsen Angel Martin](https://www.linkedin.com/in/martinjacobsen-93)
