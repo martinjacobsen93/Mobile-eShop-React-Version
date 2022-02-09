@@ -60,35 +60,44 @@ const CartProvider = ({children}) => {
 
     const deleteOne = itemId => {
         const itemInCart = cart.find(e => e.id === itemId)
-        if (itemInCart.quantity === 1) {
+        itemInCart.quantity === 1 ? removeItemFromCart(itemId) :
+        setCart(cart.map(e => {
+            return e.id === itemId ? {...e, quantity: e.quantity - 1} : e
+        }))
+        setTotal(total - itemInCart.precio)
+        setCantItems(cantItems - 1)
+    }
+
+    const cartItemIndex = (itemId) => {     /* CREO ESTA FUNCION PARA NO REPETIR CODIGO AL BUSCAR EL INDICE DE ITEM EN EL CARRITO*/
+        return (cart.findIndex(item => item.id === itemId))
+    }
+
+    const removeItemFromCart = id => {
+        if (cart.length === 1) setIsCartEmpty(true)
+        const totalItemPrice = (cart[cartItemIndex(id)].precio * cart[cartItemIndex(id)].quantity)
+        setTotal(total - totalItemPrice)
+        setCantItems(cantItems - cart[cartItemIndex(id)].quantity)
+        cart.splice(cartItemIndex(id), 1)
+        setCart([...cart])
+    }
+
+    const removeAll = (itemId) => {
+        if (cart[cartItemIndex(itemId)].quantity > 1) {
             swal({
-                title: 'Eliminar producto',
-                text: 'Estás seguro que desear eliminar este item de tu carrito?',
+                title: 'Eliminar todos los items',
+                text: 'Deseas eliminar todos los items seleccionados de este producto?',
                 icon: 'warning',
                 buttons: ['No', 'Si']
-            }).then(res => {
+            })
+            .then(res => {
                 if (res) {
-                    removeItem(itemId)
+                    removeItemFromCart(itemId)
                 }
             })
         }
         else {
-            setCart(cart.map(e => {
-                return e.id === itemId ? {...e, quantity: e.quantity - 1} : e
-            }))
-            setTotal(total - itemInCart.precio)
-            setCantItems(cantItems - 1)
+            removeItemFromCart(itemId)
         }
-    }
-
-    const removeItem = (itemId) => {
-        if (cart.length === 1) setIsCartEmpty(true);
-        const itemIndex = cart.findIndex(item => item.id === itemId);
-        const totalItemPrice = (cart[itemIndex].precio * cart[itemIndex].quantity)
-        setTotal(total - totalItemPrice)
-        setCantItems(cantItems - cart[itemIndex].quantity)
-        cart.splice(itemIndex, 1)
-        setCart([...cart])
     }
 
     const clear = () => {
@@ -178,7 +187,7 @@ const CartProvider = ({children}) => {
     }
 
     const data = {addItem, 
-        removeItem, 
+        removeAll,
         clear, 
         cart, 
         isCartEmpty, 

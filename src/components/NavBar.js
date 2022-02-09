@@ -4,6 +4,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget'
 import logo from '../img/mobile-logo.png'
+import { categorias } from '../Router-Dom/categorias';
 
 const NavBar = () => {
   return (
@@ -19,11 +20,9 @@ const NavBar = () => {
         <Nav.Link as={Link} to='/'>Home</Nav.Link>
         <Nav.Link as={Link} to='/contacto'>Contacto</Nav.Link>
         <NavDropdown title='Productos'>
-          <NavDropdown.Item as={Link} to='/products/Samsung'>Samsung</NavDropdown.Item>
-          <NavDropdown.Item as={Link} to='/products/Motorola'>Motorola</NavDropdown.Item>
-          <NavDropdown.Item as={Link} to='/products/Xiaomi'>Xiaomi</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item as={Link} to='/productos'>Todas las marcas</NavDropdown.Item>
+          {categorias.map(c => {
+            return <NavDropdown.Item as={Link} to={c.address}>{c.text}</NavDropdown.Item>
+          })}
         </NavDropdown>
         <Nav.Link as={Link} to='/cart'><CartWidget/></Nav.Link>
 

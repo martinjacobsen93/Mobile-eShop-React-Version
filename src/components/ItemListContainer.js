@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ItemList from './ItemList'
 import TituloPagina from './TituloPagina'
+import { categorias } from '../Router-Dom/categorias'
 import { NavLink, useParams } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import db from '../firebase/firebase'
@@ -11,15 +12,6 @@ const ItemListContainer = ({titulo}) => {
 
     const [celulares, setCelulares] = useState([])
     const [loading, setLoading] = useState(false)
-
-    const categorias = [
-        {id: 1, address: "/productos", text: "TODAS LAS MARCAS"},
-        {id: 2, address: "/products/Samsung", text: "Samsung"},
-        {id: 3, address: "/products/Motorola", text: "Motorola"},
-        {id: 4, address: "/products/Xiaomi", text: "Xiaomi"}
-    ]
-
-
     
     useEffect(() => {
         setLoading(true)    

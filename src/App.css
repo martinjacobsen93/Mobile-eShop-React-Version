@@ -12,14 +12,6 @@
 /* NAVBAR */
 
 .navBar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 8vh;
-}
-
-.navBar {
   padding: 1.2rem;
   min-height: 8vh;
 }
@@ -137,26 +129,6 @@
   background-color: rgba(0, 0, 0, 0.664);
 }
 
-/* BOTON GENERICO */
-
-.botonGenerico {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.664);
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 180px;
-  padding: 8px;
-  border: 2px solid black;
-  border-radius: 6px;
-  transition: all .4s;
-}
-
-.botonGenerico:hover {
-  background-color: rgba(255, 255, 255, 0.712);
-  color: black;
-  border-color: black;
-}
-
 /* HOME */
 
 .main__Home, .cartPage__img {
@@ -202,7 +174,6 @@
 }
 
 .item__container:hover {
-  /* border-color: #fff; */
   background-color: rgba(7, 6, 6, 0.250);
   box-shadow: 10px 10px 30px #2c2b2bc2;
 }
@@ -370,35 +341,155 @@
 
 /* CART PAGE PRODUCT DETAIL */
 
-@media only screen and (min-width: 320px) {
-  .cartPage__img {
-    width: 90%;
-  }  
-}
-
-@media only screen and (min-width: 480px) {
-  .cartPage__img {
-    width: 410px;
-  }  
-}
-
-.cartPage__subtitle {
-  font-size: 22px;
+.cartPage__subtitle, .contactoPage__subtitle {
+  font-size: 27px;
   margin-top: 50px;
   font-weight: bold;
 }
 
 .cartProductDetail {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
   border: 2px solid black;
   border-radius: 6px;
-  padding: 10px;
-  gap: 30px;
-  width: 50%;
   margin: 10px auto;
+  animation: productDetailAnimation .6s ease-in;
 }
+
+@keyframes productDetailAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (min-width: 320px) {
+  .cartPage__img {
+    width: 90%;
+  }  
+  .cartProductDetail {
+    grid-template-columns: 100%;
+    grid-template-areas: 'img'
+                         'modelo'
+                         'contador'
+                         'precio'
+                         'subtotal'
+                         'btnEliminar';
+    width: 85%;
+    padding: 8px;
+    background: linear-gradient(to bottom, rgb(17, 84, 100), rgb(212, 208, 208));
+  }
+
+  .cartProductDetail__img {
+    grid-area: img;
+    margin: auto;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 4px;
+    transition: all .5s ease;
+  }
+
+  .cartProductDetail__productName {
+    grid-area: modelo;
+    color: #fff;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .cartProductDetail__counter {
+    grid-area: contador;
+    display: flex;
+    margin: 2px auto;
+    font-size: 18px;
+  }
+
+  .cartProductDetail__price {
+    grid-area: precio;
+    margin: 20px auto;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .cartProductDetail__subtotal {
+    grid-area: subtotal;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .cartProductDetail__btnEliminar {
+    grid-area: btnEliminar;
+    margin: auto;
+    height: 60px;
+  }
+
+  .botonGenerico3 {
+    width: 70%;
+    border-radius: 6px;
+    border: 2px solid black;
+    transition: all .4s;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .cartProductDetail__img {
+    width: 90%;
+  }
+  .botonGenerico3 {
+    width: 65%;
+  }
+
+  .cartPage__img {
+    width: 410px;
+  }  
+}
+
+@media only screen and (min-width: 900px) {
+
+  .cartProductDetail {
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    grid-template-areas: 'img modelo contador precio subtotal btnEliminar';
+    width: 92%;
+    padding: 6px;
+  }
+
+
+  .cartProductDetail__img, .cartProductDetail__productName, .cartProductDetail__counter, .cartProductDetail__price, .cartProductDetail__subtotal{
+    width: 100%;
+    margin: auto;
+  }
+  .botonGenerico3 {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .cartProductDetail {
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    grid-template-areas: 'img modelo contador precio subtotal btnEliminar';
+    width: 70%;
+    padding: 2px;
+  }
+
+  .cartProductDetail__img {
+    width: 65%;
+  }
+  .botonGenerico3 {
+    width: 85%;
+  }
+}
+
+.cartProductDetail__img:hover {
+  border-color: rgba(8, 133, 150, 0.76);
+}
+
+              /* BOTONES COUNTER DE CART PAGE */
 
 .cartDetailButton {
   padding: auto;
@@ -406,34 +497,70 @@
   width: 30px;
   height: 30px;
   color: white;
-  /* font-weight: bold; */
+  font-weight: bold;
+  border-color: rgba(0, 0, 0, 0.815);
+
 }
 
-.cartProductDetail__counter {
-  display: flex;
-}
 
-.cartProductDetail__quantity, .cartProductDetail__detail {
-  color: green;
+.cartProductDetail__quantity {
+  color: white;
   margin: auto 0;
   font-weight: bold;
 }
 
 .cartDetailButtonAdd {
-  background-color: rgba(0, 128, 0, 0.750);
+  background-color: rgba(50, 126, 145, 0.829);
   border-radius: 4px;
+  transition: all .1s ease;
+}
+
+.cartDetailButtonAdd:active {
+  background-color: rgba(8, 68, 83, 0.829);
 }
 
 .cartDetailButtonSub {
   background-color: rgba(255, 0, 0, 0.750);
   border-radius: 4px;
+  transition: all .1s ease;
 }
 
+.cartDetailButtonSub:active {
+  background-color: rgb(204, 8, 8);
+}
+
+.contador__btnComprar, .botonGenerico2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 180px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 2px solid black;
+  transition: all .4s;
+}
+
+.contador__btnComprar:hover, .botonGenerico2:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.664);
+}
+
+              /* TOTAL PRICE DE CART PAGE */
+
 .cartPage__TotalPrice {
+  font-size: 27px;
   color: red;
   margin: auto 0;
   font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+  transition: all .5s ease;
 }
+
+.cartPage__TotalPrice:hover {
+  color: black;
+}
+
+/* MAIN */
 
 .main {
   min-height: 80vh;
@@ -650,7 +777,7 @@
 }
 
 .cartIcon {
-  width: 25px;  /* hay que hacerlo responsive. */
+  width: 25px;
   margin: auto;
   padding-top: 2px;
   color: white;
@@ -687,11 +814,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.resumeDetail__totalAmount {
-  color: green;
-  /* padding-top: 20px; */
 }
 
 .contenedor {
@@ -748,7 +870,7 @@
 	color: #1f1f1f;
 }
 
-.formulario input:focus {
+.formulario input:focus, .formulario textarea:focus {
 	outline: none;
 	border: 2px solid #0085FF;
 }
@@ -757,11 +879,12 @@
 	color: #e92b2d;
 	font-weight: 600;
 	font-size: 12px;
+  left: 0;
 }
 
 .formulario button[type="submit"], .btn-formReturn {
 	display: block;
-	background: #0085FF;
+	background: rgba(29, 115, 119, 0.790);
 	font-weight: 600;
 	font-family: 'Open Sans', sans-serif;
 	border: none;
@@ -771,11 +894,11 @@
 	border-radius: 5px;
 	color: #fff;
 	font-size: 16px;
-	transition: .3s ease all;
+	transition: .5s ease all;
 }
 
 .formulario button[type="submit"]:hover {
-	background: #0051ff;
+	background: #225c5f;
 }
 
 .btn-formReturn {
@@ -826,30 +949,34 @@
 
 /* CONTACTO */
 
+.contacto__form-TextArea {
+  min-height: 150px;
+}
+
+.contacto__img {
+  animation: moveImg .9s ease-in;
+}
+
+@keyframes moveImg {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media only screen and (min-width: 320px) {
-  .main-contacto {
-    background-image: url('./img/message-img.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 90%;
+  .contacto__img {
+    width: 90%;
   }
 }
 
 @media only screen and (min-width: 480px) {
-  .main-contacto {
-    background-size: 80%;
-  }
-}
-
-@media only screen and (min-width: 900px) {
-  .main-contacto {
-    background-size: 50%;
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  .main-contacto {
-    background-size: 40%;
+  .contacto__img {
+    width: 410px;
   }
 }
 
@@ -885,11 +1012,56 @@
   }
 }
 
-.swal-button-container {
-  display: inline-flex;
-  align-items: center;
+/* ORDEN CONFIRMADA */
+
+.resumeDetail__totalAmount {
+  color: #02a802;
+  text-decoration: underline;
 }
- 
-.swal-button, .swal-button--cancel {
-  display: inline-block;
+
+.idCompra {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.idCompra:hover {
+  color: rgba(255, 255, 255, 0.884);
+}
+
+/* MODAL */
+
+.swal-text {
+  text-align: center;
+}
+
+.swal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* BOTONES */
+
+.botonGenerico {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.664);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 180px;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 6px;
+  transition: all .4s;
+}
+
+.botonGenerico:hover {
+  background-color: rgba(255, 255, 255, 0.712);
+  color: black;
+  border-color: black;
+}
+
+.botonGenerico3:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.664);
 }
