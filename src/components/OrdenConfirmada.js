@@ -40,7 +40,7 @@ const OrdenConfirmada = () => {
         <>
             {visible && <div className='resumeDetail'>
                 <img src={ordenConfirmada} alt='orderConfirmed' className='orderConfirmed-img'/>
-                <h2>Gracias por tu compra {user.nombre} {user.apellido}. La misma ya ha sido confirmada y a continuación podrás ver los detalles en tu casilla de correo.</h2>
+                <h2>Gracias por tu compra {user.nombre} {user.apellido}. La misma ya ha sido confirmada y en breve podrás ver los detalles en tu casilla de correo.</h2>
                 <h3 className='resumeDetail__totalAmount'>Monto total: ${total}</h3>
                 <h3>Dirección de envío: {user.direccion}</h3>
                 <h4>El seguimiento de tu envío lo podrás hacer a través del siguiente tracking code: <span className='idCompra'>{purchaseID}</span></h4>
