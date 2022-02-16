@@ -13,6 +13,7 @@ function App() {
   
   return (
     <div className="App">
+      {/* El routeo de las URL se realizó con React Router-Dom y se utilizan las vistas de Home, Contacto, ItemListContainer, ItemDetailContainer, CartPage y Error404*/}
       <Router>
         <NavBar/>
         <Routes>
@@ -22,7 +23,7 @@ function App() {
 
           <Route path="/productos" element={<ItemListContainer titulo={'Tienda de celulares'} />} />
 
-          <Route path="/products/:marcaId" element={<ItemListContainer titulo={'Filtrado por marca'} />} /> {/* FILTRADO POR CATEGORIA*/}
+          <Route path="/products/:marcaId" element={<ItemListContainer titulo={'Filtrado por marca'} />} /> {/* FILTRADO POR MARCA DE CELULAR*/}
 
           <Route path="/producto/:productoId" element={<ItemDetailContainer /> }/> {/* VISTA DEL DETALLE DE CELULAR*/}
 

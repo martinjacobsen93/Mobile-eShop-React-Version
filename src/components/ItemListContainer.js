@@ -14,25 +14,34 @@ const ItemListContainer = ({titulo}) => {
     const [loading, setLoading] = useState(false)
     
     useEffect(() => {
-        setLoading(true)    
-        const getCelulares = async () => {
-            const myItems = marcaId ? query(collection(db, 'celulares'), where('marca', '==', marcaId))
-                                    : collection(db, 'celulares');
-    
-            try {
-                const querySnapshot = await getDocs(myItems)
-                setCelulares(querySnapshot.docs.map(celular => {
-                    return {...celular.data(), id: celular.id}
-                }))
-            } catch {
-                console.log("error, no se pudo conseguir la data solicitada")
-            }
-            setLoading(false)
-        }
+        /* Defino una función asíncrona, la cual me trae los productos de la colección celulares de firestore.
+           Si no hay un url con la marca de alguno de los productos, me traerá todos los productos de la colección, caso contrario solo traerá por filtro los de la marca
+           seleccionada.*/
+        setLoading(true)
 
-        getCelulares();
+        let counter;
+        setTimeout(() => {
+            
+            const getCelulares = async () => {
+                const myItems = marcaId ? query(collection(db, 'celulares'), where('marca', '==', marcaId))
+                                        : collection(db, 'celulares');
+        
+                try {
+                    const querySnapshot = await getDocs(myItems)
+                    setCelulares(querySnapshot.docs.map(celular => {
+                        return {...celular.data(), id: celular.id}
+                    }))
+                } catch {
+                    console.log("Ha ocurrido un problema con la base de datos. No se pudo conseguir la información solicitada")
+                }
+                setLoading(false)
+            }
+    
+            getCelulares();
+        }, 120);
         
         return (() => {
+            clearTimeout(counter)
             setLoading(false)
         })
 

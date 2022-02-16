@@ -17,6 +17,8 @@ const CartProvider = ({children}) => {
     const [checkout, setCheckout] = useState(false)
 
     const addItem = (item, quantity) => {
+        /* Se define función la cual agrega un item al carrito dado con la cantidad dada. Si el item ya se encuentra en el carrito, modificará sólo la cantidad del
+         item agregado. */
 
         const fullItem = {...item, quantity}
         setCart([...cart, fullItem]);
@@ -48,6 +50,8 @@ const CartProvider = ({children}) => {
     }
 
     const addOne = itemId => {
+        /* Se define función la cual al ser ejecutada aumenta en 1 la cantidad de items del producto dado en el carrito, siempre y cuando el stock sea mayor o igual que
+        la cantidad a agregar y la cantidad ya agregada (si la hubiera). */
         const itemInCart = cart.find(e => e.id === itemId)
         if (itemInCart.stock > 0 && itemInCart.stock > itemInCart.quantity) {
             setCart(cart.map(e => {
@@ -59,6 +63,7 @@ const CartProvider = ({children}) => {
     }
 
     const deleteOne = itemId => {
+        /* Se define función la cual al ser ejecutada disminuye en 1 la cantidad de items del producto dado en el carrito. */
         const itemInCart = cart.find(e => e.id === itemId)
         itemInCart.quantity === 1 ? removeItemFromCart(itemId) :
         setCart(cart.map(e => {
@@ -73,6 +78,7 @@ const CartProvider = ({children}) => {
     }
 
     const removeItemFromCart = id => {
+        /* Se define función la cual al ser ejecutada borra al item dado del carrito. */
         if (cart.length === 1) setIsCartEmpty(true)
         const totalItemPrice = (cart[cartItemIndex(id)].precio * cart[cartItemIndex(id)].quantity)
         setTotal(total - totalItemPrice)
@@ -82,6 +88,8 @@ const CartProvider = ({children}) => {
     }
 
     const removeAll = (itemId) => {
+        /* Se define función que al ejecutarse muestra en pantalla una alerta preguntando si desea eliminar la cantidad total del item dado agregado al carrito.
+           ACLARACIÓN: Si la cantidad del producto dado es 1, no aparecerá la alerta y lo borrará de inmediato.*/
         if (cart[cartItemIndex(itemId)].quantity > 1) {
             swal({
                 title: 'Eliminar todos los items',
@@ -101,6 +109,7 @@ const CartProvider = ({children}) => {
     }
 
     const clear = () => {
+        /* Se define función que al ejecutarse vacía el carrito, y elimina todos los items que fueron agregados al mismo.*/
         if (cart.length > 0) {
             swal({
                 title: 'Vaciar carrito',
@@ -125,6 +134,9 @@ const CartProvider = ({children}) => {
     }
     
     const handleSubmit = (e) => {
+        /* Creo función la cual se ejecuta con el evento onSubmit del formulario de compra, la cual guarda la compra realizada en un objeto, y envía los datos
+           del usuario y los items comprados a firebase. Además se crea un nuevo documento dentro de la colección purchases el cual tiene un Id único, 
+           y es el id de seguimiento del envío. */
         e.preventDefault();
 
         const newOrder = {user: {nombre: userData.nombre,
@@ -139,15 +151,16 @@ const CartProvider = ({children}) => {
 
         setCurrentPurchase(newOrder)
 
-        const purchasesCollection = collection(db, 'purchases'); /* CREO UN NUEVO DOCUMENTO CON UNA ORDEN DE COMPRA EN FIRESTORE, Y SI LA COLECCION PURCHASES NO EXISTE, LA CREA.*/
+        const purchasesCollection = collection(db, 'purchases'); /* Creo un nuevo documento con una orden de compra en firestore, y si la colección Purchases no existe, la crea.*/
         addDoc(purchasesCollection, newOrder).then(({id}) => {
-            setCurrentPurchase((sameOrder)=> {
+            setCurrentPurchase((sameOrder) => {
                 return {...sameOrder, purchaseID: id}
             })
         })
 
-        const updateItems = () => { /* ESTA FUNCION UPDATEA EL STOCK EN FIRESTORE DE CADA PRODUCTO QUE HAYA SIDO COMPRADO.*/
-
+        const updateItems = () => { 
+            /* Esta función actualiza el stock en firestore de cada producto que haya sido comprado. */
+            
             const batch = writeBatch(db)
             const itemIds = newOrder.items.map(e => e.id)
 
@@ -159,15 +172,17 @@ const CartProvider = ({children}) => {
             batch.commit();
         }
 
-        updateItems(); // Llamo función
+        updateItems();
         setCompraFinalizada(true)
     }
 
     const toCheckout = () => {
+        /* Función definida para manejar la vista del CartPage. Si checkOut es true, se muestra el formulario de compra, caso contrario se muestra el carrito de compras. */
         setCheckout(true)
     }
 
     const clearAfterSubmitting = () => {
+        /* Se define función la cual resetea todos los contadores y vuelven las variables de estado del carrito a su estado inicial luego de realizar una compra y confirmar la misma. */
         setCart([])
         setIsCartEmpty(true)
         setTotal(0)
@@ -175,14 +190,16 @@ const CartProvider = ({children}) => {
     }
 
     const finalizarRevision = () => {
+        /* Se define función la cual devuelve todas las variables de estado a su estado inicial luego de finalizar revisión de compra.*/
         setCompraFinalizada(false)
-        setCurrentPurchase({})
+        setCurrentPurchase(null)
         setUserData(null)
         clearAfterSubmitting();
         setCheckout(false)
     }
 
     const returnToCart = () => {
+        /* Se define función la cual maneja el estado de variable checkout. Si se ejecuta dicha función se vuelve a la vista previa del formulario. */
         setCheckout(false)
     }
 

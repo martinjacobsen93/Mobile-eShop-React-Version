@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import OrdenConfirmada from './OrdenConfirmada';
 
-const FormularioCompra = () => { /* FALTAN AGREGAR ESTILOS, Y HACER UN MAPEO DE LA TOTALIDAD DE LOS ITEMS EN PANTALLA */
+const FormularioCompra = () => {
 
     const {handleUserData, handleSubmit, compraFinalizada, returnToCart} = useContext(CartContext)
 

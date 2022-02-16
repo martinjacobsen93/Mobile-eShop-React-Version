@@ -23,15 +23,15 @@ const ItemDetail = ({url, marca, año, stock, modelo, precio, id}) => {
             <TituloPagina titulo={modelo}/>
             <div className='itemDetail__container'>
                 <img src={url} className='item__img' alt='img' />
-                <p className='item__detail mt-3'>Modelo: {modelo}</p>
-                <p className='item__detail'>Marca: {marca}</p>
-                <p className='item__detail'>Año de lanzamiento: {año}</p>
-                <h3 style={{fontSize: 25}}>Precio: ${precio}</h3>
+                <div className='item__detail mt-3'>Modelo: {modelo}</div>
+                <div className='item__detail'>Marca: {marca}</div>
+                <div className='item__detail'>Año de lanzamiento: {año}</div>
+                <h3 style={{fontSize: 24}}>Precio: ${precio}</h3>
                 {(stock !== 0 && !visible) && <ItemCount stock={stock} initial={1} onAdd={onAdd} itemID={id}/>}
-                {visible && <>
-                                <button onClick={()=> navigate("/cart")} className='contador__btnComprar my-4'>Finalizar Compra</button>
-                                <button onClick={()=> navigate("/productos")} className='contador__btnComprar my-4' style={{margin: 10}}>Seguir comprando</button>
-                            </>}
+                {visible && <div className='test111'>
+                                <button onClick={()=> navigate("/cart")} className='contador__btnComprar my-3'>Finalizar Compra</button>
+                                <button onClick={()=> navigate("/productos")} className='contador__btnComprar my-3'>Seguir comprando</button>
+                            </div>}
                 {stock === 0 && <h2 className='noStockMessage'>No hay stock</h2>}
             </div>
             <button className='botonGenerico' onClick={()=> navigate("/productos")}>Regresar a Productos</button>

@@ -11,16 +11,18 @@ const Contacto = () => {
 
     let navigate = useNavigate();
 
-    const [handleContactData, setHandleContactData] = useState({})
+    const [contactData, setContactData] = useState({})
     const [formSent, setformSent] = useState(false)
 
-    const handleChangeContact = (e) => {
-        setHandleContactData({
-            ...handleContactData, [e.target.name]: e.target.value
+    const handleContactData = (e) => {
+        /* Se crea función la cual es el handler de los datos recolectados del usuario dentro del formulario.*/
+        setContactData({
+            ...contactData, [e.target.name]: e.target.value
         })
     }
 
     const showFormAlert = () => {
+        /* Creo una alerta la cual se muestra cuando se envía el formulario a la base de datos con la consulta realizada. */
         swal({
             title: 'Solicitud enviada',
             text: 'Su consulta fué enviada con éxito',
@@ -47,7 +49,7 @@ const Contacto = () => {
     
     const handleContactSubmit = (e) => { /* Creo función handleSubmit en la cual se trae la información recolectada en el formulario y se guarda en firebase.*/
         e.preventDefault();
-        const userInformation = handleContactData;
+        const userInformation = contactData;
 
         const questionsCollection = collection(db, 'formQuestions');
         addDoc(questionsCollection, userInformation);
@@ -66,7 +68,7 @@ const Contacto = () => {
             <TituloPagina titulo="Contacto"/>
                 {formSent ? 
                 
-                <div className='d-flex flex-column align-items-center'>
+                <div className='contacto__formSentContainer'>
                     <h3 className='mt-5'>Muchas gracias por su interés en Mobile Imports. Un agente se pondrá en contacto con usted a la brevedad.</h3>
                     <img src={messageImg} className='contacto__img' alt='messageImg'/>
                     <button onClick={()=> navigate("/")} className='botonGenerico'>Volver A Home</button>
@@ -85,7 +87,7 @@ const Contacto = () => {
                                     id='nombre' 
                                     placeholder='Ingrese su nombre'
                                     required
-                                    onChange={handleChangeContact}
+                                    onChange={handleContactData}
                                 />
                             </div>
                             <div>
@@ -96,7 +98,7 @@ const Contacto = () => {
                                     id="email" 
                                     placeholder='correo@correo.com'
                                     required
-                                    onChange={handleChangeContact}
+                                    onChange={handleContactData}
                                 />
                             </div>
                             <div>
@@ -106,12 +108,12 @@ const Contacto = () => {
                                     name="telefono" 
                                     id='telefono' 
                                     placeholder='Ingrese su número de teléfono (Opcional)'
-                                    onChange={handleChangeContact}
+                                    onChange={handleContactData}
                                 />
                             </div>
                             <textarea 
                                 name='mensaje' 
-                                onChange={handleChangeContact} 
+                                onChange={handleContactData} 
                                 required 
                                 maxLength={250}
                                 minLength={20}

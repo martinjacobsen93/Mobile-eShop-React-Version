@@ -11,6 +11,7 @@ const OrdenConfirmada = () => {
     const [visible, setVisible] = useState(false)
 
     useEffect(()=> {
+        /* Una vez confirmada la compra, se mostrará con delay una alerta de confirmación. Y luego se mostrarán los detalles de la compra en pantalla.*/
         let modalTimeOut;
 
         setTimeout(() => {

@@ -78,6 +78,11 @@
   margin: auto;
 }
 
+.contador__remainingStock {
+  color: red;
+  font-weight: bold;
+}
+
 .contador__boton {
   width: 40px;
   transition: all .4s;
@@ -115,8 +120,7 @@
 }
 
 .contador__btnComprar, .botonGenerico2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 8px;
   width: 180px;
   padding: 8px;
   border-radius: 6px;
@@ -948,6 +952,12 @@
 }
 
 /* CONTACTO */
+
+.contacto__formSentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .contacto__form-TextArea {
   min-height: 150px;

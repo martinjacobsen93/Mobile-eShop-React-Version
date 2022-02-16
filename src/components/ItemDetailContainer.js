@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
     const { productoId } = useParams();
 
     useEffect(() => {
-        
+        /* Defino una función asíncrona, la cual me trae de firestore el producto que tenga un id que coincida con el param productoId y lo muestra en pantalla.*/
         const getCelular = async () => {
             const ref = doc(db, 'celulares', productoId);
 

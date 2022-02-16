@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react/cjs/react.development'
 import TituloPagina from '../components/TituloPagina'
 import phone from '../img/phone.svg'
 
@@ -9,7 +8,7 @@ const Home = () => {
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false);
 
-    useEffect(() => { /* Utilizo este useEffect porque la carga de la imagen a veces demora unos poco milisegundos y no acompaña al resto de los elementos. */
+    useEffect(() => {
         let homeTimeOut;
 
         setTimeout(() => {
