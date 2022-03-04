@@ -19,13 +19,13 @@ Cuenta con
 
 1.  Forkeá y cloná el repositorio
     
-2.  Parado en la raíz del proyecto corré el comando
+2.  Una vez ubicado en la raíz del proyecto ejecuta el comando
     ```
     npm install
     ```
     para instalar todas las dependecias del proyecto
     
-3.  Para correr la app en tu navegador usá el siguiente comando
+3.  Para ejecutar la app en tu navegador usá el siguiente comando
     
     ```
     npm start
