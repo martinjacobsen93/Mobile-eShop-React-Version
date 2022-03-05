@@ -21,7 +21,6 @@ const CartProvider = ({children}) => {
          item agregado. */
 
         const fullItem = {...item, quantity}
-        setCart([...cart, fullItem]);
 
         const itemInCart = cart.find(e => e.id === item.id)
         itemInCart ? 
